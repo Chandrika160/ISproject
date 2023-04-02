@@ -54,7 +54,7 @@
 "    #salary = {salary1, salary2, salary3, salary4}.\n" +
 
 "predicates\n" +
-"    matchingskills( #user_skills, #company).\n" +
+"    skillsfor( #user_skills, #company).\n" +
 "      %% remote_work(#user_skills).\n" +
 "    locationof( #location, #company).\n" +
 "      %% flexible_hours(#user_skills).\n" +
@@ -65,8 +65,8 @@
 "    part_time_or_freelance(#user_skills).\n" +
 
 "rules\n" +
-"    matchingskills(python,amazon).\n" +
-"    matchingskills(java, tcs).\n" +
+"    skillsfor(python,amazon).\n" +
+"    skillsfor(java, tcs).\n" +
 "    locationof(dallas,amazon).\n" +
 "    locationof(houston,tcs).\n" +
 "    locationof(seattle, epam).\n" +
