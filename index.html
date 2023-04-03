@@ -28,7 +28,6 @@
       #answer-box {
         border: 1px solid black;
         padding: 10px;
-        background-color:blue;
         margin-top: 10px;
       }
       body{
@@ -46,7 +45,7 @@
     <button id="voice-input-btn"><i class="fa fa-microphone"></i></button>
     <input type="text" id="text-input" placeholder="Type your question...">
     <button id="submit-btn">Submit</button>
-    <mark><div background-color: black id="answer-box"></div></mark>
+    <mark><div background-color: "black" id="answer-box"></div></mark>
     </center>
     <script>
       
@@ -157,7 +156,6 @@
         const question = textInput.value;
         if (question.trim() === '') {
           answerBox.innerHTML = 'Please ask a question.';
-          answerBox.background.color= "red";
           return;
         }
         var trim_script = question.split(" ");
