@@ -63,13 +63,13 @@
             "    #no_of_positions = 0..1000. \n" +
             "    #years_of_experience = 0..15. \n" +
             "    #job_arrangement = {workfromhome, workfromoffice}. \n" +
-            "    #work_looking_for= work(#job_arrangement,#job_type). \n" +
+      //      "    #work_looking_for= work(#job_arrangement,#job_type). \n" +
             "    #experience = {entrylevel, midlevel, seniorlevel}. \n" +
             "    #salary = {salary1, salary2, salary3}. \n" + 
             "predicates\n" +
             "    skillsfor( #user_skills, #company).\n" +
             "    positions(#company,#no_of_positions).\n" +
-            "    type_of_work(#work_looking_for, #company).\n" +
+          //  "    type_of_work(#work_looking_for, #company).\n" +
             "    locationof( #location, #company).\n" +
             "    experience(#user_skills, #years_of_experience). \n" +
             "    training_opportunities(#user_skills, #company). \n" +
@@ -94,16 +94,16 @@
             "    positions(target, 80).\n" +
             "    positions(jpmorgan, 222).\n" +
             "    positions(microsoft, 877).\n" +
-            "     type_of_work(work(workfromhome, fulltime), amazon). \n" +
-            "     type_of_work(work(workfromoffice, internship), tcs). \n" +
-            "     type_of_work(work(workfromhome, temporary), wipro). \n" +
-            "     type_of_work(work(workfromhome, freelance), apple). \n" +
-            "     type_of_work(work(workfromoffice, contract), epam). \n" +
-            "     type_of_work(work(workfromoffice, fulltime), facebook). \n" +
-            "     type_of_work(work(workfromoffice, internship), jpmorgan). \n" +
-            "     type_of_work(work(workfromoffice, contract), google). \n" +
-            "     type_of_work(work(workfromhome, freelance), microsoft). \n" +
-            "     type_of_work(work(workfromoffice, temporary), amazon). \n" +
+     //       "     type_of_work(work(workfromhome, fulltime), amazon). \n" +
+       //     "     type_of_work(work(workfromoffice, internship), tcs). \n" +
+         //   "     type_of_work(work(workfromhome, temporary), wipro). \n" +
+           // "     type_of_work(work(workfromhome, freelance), apple). \n" +
+         //   "     type_of_work(work(workfromoffice, contract), epam). \n" +
+        //    "     type_of_work(work(workfromoffice, fulltime), facebook). \n" +
+         //   "     type_of_work(work(workfromoffice, internship), jpmorgan). \n" +
+          //  "     type_of_work(work(workfromoffice, contract), google). \n" +
+           // "     type_of_work(work(workfromhome, freelance), microsoft). \n" +
+            //"     type_of_work(work(workfromoffice, temporary), amazon). \n" +
             "     locationof(dallas,amazon). \n" +
             "     locationof(houston,tcs). \n" +
             "     locationof(seattle, epam). \n" +
