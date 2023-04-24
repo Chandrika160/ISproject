@@ -60,16 +60,16 @@
             "    #company = {google,amazon,apple,tcs,wipro,epam,facebook,target,jpmorgan, microsoft}.\n" +
             "    #location = {dallas, houston, seattle, newyork, california, austin, boston, chicago}. \n" +
             "    #job_type = {fulltime, internship, temporary, freelance,contract}. \n" +
-            "    #no_of_positions = 0..1000. \n" +
-            "    #years_of_experience = 0..15. \n" +
-            "    #job_arrangement = {workfromhome, workfromoffice}. \n" +
+         //   "    #no_of_positions = {143,343,750,250,500,600,800,80,222,877} \n" +
+            "    #years_of_experience = {4,5,6,12,2,10,9,8} \n" +
+        //    "    #job_arrangement = {workfromhome, workfromoffice}. \n" +
       //      "    #work_looking_for= work(#job_arrangement,#job_type). \n" +
             "    #experience = {entrylevel, midlevel, seniorlevel}. \n" +
             "    #salary = {salary1, salary2, salary3}. \n" + 
             "predicates\n" +
             "    skillsfor( #user_skills, #company).\n" +
             "    positions(#company,#no_of_positions).\n" +
-          //  "    type_of_work(#work_looking_for, #company).\n" +
+            "    type_of_work(#job_type, #company).\n" +
             "    locationof( #location, #company).\n" +
             "    experience(#user_skills, #years_of_experience). \n" +
             "    training_opportunities(#user_skills, #company). \n" +
@@ -94,7 +94,7 @@
             "    positions(target, 80).\n" +
             "    positions(jpmorgan, 222).\n" +
             "    positions(microsoft, 877).\n" +
-     //       "     type_of_work(work(workfromhome, fulltime), amazon). \n" +
+            "     type_of_work( fulltime, amazon). \n" +
        //     "     type_of_work(work(workfromoffice, internship), tcs). \n" +
          //   "     type_of_work(work(workfromhome, temporary), wipro). \n" +
            // "     type_of_work(work(workfromhome, freelance), apple). \n" +
