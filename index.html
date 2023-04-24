@@ -227,10 +227,11 @@
             console.log(response);
              const answer = response || 'Sorry, I could not find an answer.';
              answerDiv.innerHTML = answer;
+             answerBox.style.backgroundColor = "yellow";
              answerBox.style.color= "green";
-            answerBox.style.backgroundColor = "yellow";
+            
              answerBox.innerHTML = answer;
-             
+             answerBox.style.backgroundColor = "yellow";
           },
           error: function(xhr, status, error) {
             console.log("error: " + error);
