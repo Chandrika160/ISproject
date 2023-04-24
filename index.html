@@ -70,7 +70,7 @@
 "    least_experience(#user_skills).\n" +
 "    most_experience(#user_skills).\n" +
 "    training_opportunities(#user_skills).\n" +
-"    salaryfor(#experience,#salary).\n" +
+"    salaryfor(#salary, #experience).\n" +
 "    part_time_or_freelance(#user_skills).\n" +
 "    typeofjob(#job_type,#company).\n"+
 "rules\n" +
@@ -80,8 +80,8 @@
 "    locationof(houston,tcs).\n" +
 "    locationof(seattle, epam).\n" +
 "    locationof(newyork, wipro).\n" +
-"    salaryfor(entrylevel,salary1).\n" +
-"    salaryfor(midlevel,salary2).\n" +
+"    salaryfor(salary1, entrylevel).\n" +
+"    salaryfor(salary2, midlevel).\n" +
 "    training_opportunities(linux).\n" +
 "    training_opportunities(php).\n" +
 "    typeofjob(internship,wipro).\n"+
