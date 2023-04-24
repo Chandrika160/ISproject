@@ -2,12 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Job Search</title>
+    <title>Simple ASP Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src='//www.aa.com/jquery.js'></script>
+    
     <script src="fuzzyset.js"></script>
 
     <style>
@@ -17,126 +18,54 @@
         color: white;
         padding: 10px;
         text-align: center;
-        text-decoration-color: red;
+        text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 6px 4px;
+        margin: 4px 2px;
         cursor: pointer;
         border-radius: 50%;
       }
 
       #answer-box {
         border: 1px solid black;
-        background-color: "red";
         padding: 10px;
         margin-top: 10px;
-      }
-      body{
-        background-image: url("jobsearch22.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
       }
     </style>
   </head>
   <body>
-    <center>
-    <h1><<FONT COLOR=	"#EE4B2B">Looking for jobs??</font></h1>
-  <h2><FONT COLOR=	"#EE4B2B">Ask a question about job</font></h2>
+    <h1>Ask a Question</h1>
     <div id="answer"></div>
     <button id="voice-input-btn"><i class="fa fa-microphone"></i></button>
     <input type="text" id="text-input" placeholder="Type your question...">
     <button id="submit-btn">Submit</button>
-    <mark><div style=background-color: black" id="answer-box"></div></mark>
-    </center>
+    <div id="answer-box"></div>
+
     <script>
       
       var isClose=true;
-        const stopwords = ["of", "the", "a", "an", "any", "is", "can", "who", "what", "why", "whom","are","for","which"];
-        var editor ="sorts \n" +
-"     #user_skills = {python, java, csharp, linux, php, erlang,sql,ruby,swift}. \n" +
-"     #company = {google,amazon,apple,tcs,wipro,epam,facebook,target,jpmorgan, microsoft}. \n" +
-"     #location = {dallas, houston, seattle, newyork, california, austin, boston, chicago}. \n" +
-"     #job_type = {fulltime, internship, temporary, freelance,contract}. \n" +
-"     #no_of_positions = 0..1000. \n" +
-"     #years_of_experience = 0..15. \n" +
-"     #job_arrangement = {workfromhome, workfromoffice}. \n" +
-"     #work_looking_for= work(#job_arrangement,#job_type). \n" +
-"     #experience = {entrylevel, midlevel, seniorlevel}. \n" +
-"     #salary = {salary1, salary2, salary3}. \n" +
-     
-"predicates \n" +
-"    skillsfor( #user_skills, #company). \n" +
-"     positions(#company,#no_of_positions). \n" +
-"     type_of_work(#work_looking_for, #company). \n" +
-"     locationof( #location, #company). \n" +
-"     experience(#user_skills, #years_of_experience). \n" +
-"     training_opportunities(#user_skills, #company). \n" +
-"     salaryfor(#experience,#salary). \n" +
-
-
-"rules \n" +
-"    skillsfor(python,amazon). \n" +
-"     skillsfor(java, tcs). \n" +
-"     skillsfor(csharp, wipro). \n" +
-"     skillsfor(swift, apple). \n" +
-"     skillsfor(linux, epam). \n" +
-"     skillsfor(erlang, facebook). \n" +
-"     skillsfor(php, jpmorgan). \n" +
-"     skillsfor(sql, google). \n" +
-"     skillsfor(ruby, microsoft). \n" +
-"     positions(google, 143). \n" +
-"     positions(amazon, 343). \n" +
-"     positions(apple, 750). \n" +
-"     positions(tcs, 250). \n" +
-"     positions(wipro, 500). \n" +
-"     positions(epam, 600). \n" +
-"     positions(facebook, 800). \n" +
-"     positions(target, 80). \n" +
-"     positions(jpmorgan, 222). \n" +
-"     positions(microsoft, 877). \n" +
-"     type_of_work(work(workfromhome, fulltime), amazon). \n" +
-"     type_of_work(work(workfromoffice, internship), tcs). \n" +
-"     type_of_work(work(workfromhome, temporary), wipro). \n" +
-"     type_of_work(work(workfromhome, freelance), apple). \n" +
-"     type_of_work(work(workfromoffice, contract), epam). \n" +
-"     type_of_work(work(workfromoffice, fulltime), facebook). \n" +
-"     type_of_work(work(workfromoffice, internship), jpmorgan). \n" +
-"     type_of_work(work(workfromoffice, contract), google). \n" +
-"     type_of_work(work(workfromhome, freelance), microsoft). \n" +
-"     type_of_work(work(workfromoffice, temporary), amazon). \n" +
-"     locationof(dallas,amazon). \n" +
-"     locationof(houston,tcs). \n" +
-"     locationof(seattle, epam). \n" +
-"     locationof(newyork, wipro).\n" +
-"     locationof(california, apple). \n" +
-"     locationof(austin, facebook). \n" +
-"     locationof(boston, jpmorgan). \n" +
-"     locationof(chicago, google). \n" +
-"     locationof(newyork, microsoft). \n" +
-"     experience(python, 4). \n" +
-"     experience(linux, 5). \n" +
-"     experience(java, 12). \n" +
-"     experience(php, 6). \n" +
-"     experience(swift, 2). \n" +
-"     experience(erlang, 10). \n" +
-"     experience(sql, 5). \n" +
-"     experience(ruby, 8). \n" +
-"     experience(csharp, 9). \n" +
-"     training_opportunities(linux, microsoft). \n" + 
-"     training_opportunities(php, amazon). \n" +
-"     training_opportunities(python, tcs). \n" +
-"     training_opportunities(java, wipro). \n" +
-"     training_opportunities(sql, epam). \n" +
-"     training_opportunities(erlang, facebook). \n" +
-"     training_opportunities(swift, apple). \n" +
-"     training_opportunities(ruby,jpmorgan). \n" +
-"     training_opportunities(csharp, google). \n" +
-"     training_opportunities(java, target). \n" +
-"     salaryfor(entrylevel,salary1). \n" +
-"     salaryfor(midlevel,salary2). \n" +
-"     salaryfor(seniorlevel,salary3). \n" +
-
-
+        const stopwords = ["of", "the", "a", "an", "any", "is", "can", "who", "what", "why", "whom"];
+        var editor = "sorts\n" +
+            "    #people = {tommy, alex, john, daniel, sarah, peter, lino}.\n" +
+            "    #gender = {male, female}.\n" +
+            "predicates\n" +
+            "    advisor(#people, #people).\n" +
+            "    friend(#people, #people).\n" +
+            "    gender(#people,#gender).\n" +
+            "    spanish(#people).\n" +
+            "rules\n" +
+            "    advisor(tommy, alex).\n" +
+            "    advisor(tommy, john).\n" +
+            "    advisor(tommy, daniel).\n" +
+            "    advisor(tommy, lino).\n" +
+            "    friend(lino, alex).\n" +
+            "    friend(lino, peter).\n" +
+            "    friend(sarah, alex).\n" +
+            "    friend(X, Y):-friend(Y,X).\n" +
+            "    gender(tommy,male).\n" +
+            "    gender(lino,male).\n" +
+            "    gender(sarah, female).\n" +
+            "    spanish(lino).";
         // sorts
         var contstring = editor.split("sorts\n")[1].split("predicates\n");
         var sortstring = contstring[0].split('.');
@@ -207,8 +136,6 @@
         const question = textInput.value;
         if (question.trim() === '') {
           answerBox.innerHTML = 'Please ask a question.';
-          answerBox.style.color= "green";
-          answerBox.style.backgroundColor = "yellow";
           return;
         }
         var trim_script = question.split(" ");
