@@ -56,70 +56,37 @@
       var isClose=true;
         const stopwords = ["of", "the", "a", "an", "any", "is", "can", "who", "what", "why", "whom", "are" ,"for", "which"];
         var editor = "sorts\n" +
-            "    #user_skills = {python, java, csharp, linux, php, erlang, sql, ruby, swift}.\n" +
-            "    #company = {google, amazon, apple, tcs, wipro, epam, facebook, target, jpmorgan, microsoft}.\n" +
-            "    #location = {dallas, houston, seattle, newyork, california, austin, boston, chicago}. \n" +
-            "    #job_type = {fulltime, parttime, internship, temporary, freelance,contract}. \n" +
-            "    #experience = {entrylevel, midlevel, seniorlevel}. \n" +
-            "    #salary = {salary1, salary2, salary3}. \n" + 
-            "predicates\n" +
-            "    skillsforcompany( #user_skills, #company).\n" +
-            "    locationof( #location, #company).\n" +
-            "    experience(#user_skills, #experience). \n" +
-            "    trainingopportunities(#user_skills, #company). \n" +
-            "    salaryfor(#experience,#salary). \n" +
-            "    typeofJob(#job_type,#company). \n"+
-            "rules\n" +
-            "    skillsforcompany(python,amazon).\n" +
-            "    skillsforcompany(java, tcs).\n" +
-            "    skillsforcompany(csharp, wipro)\n" +
-            "    skillsforcompany(swift, apple).\n" +
-            "    skillsforcompany(linux, epam).\n" +
-            "    skillsforcompany(erlang, facebook).\n" +
-            "    skillsforcompany(php, jpmorgan).\n" +
-            "    skillsforcompany(sql, google).\n" +
-            "    skillsforcompany(ruby, microsoft).\n" +
-            "     typeofJob(fulltime, amazon). \n" +
-            "     typeofJob(internship, tcs). \n" +
-            "     typeofJob(temporary, wipro). \n" +
-            "     typeofJob(freelance, apple). \n" +
-            "     typeofJob(contract, epam). \n" +
-            "     typeofJob(fulltime, facebook). \n" +
-            "     typeofJob(internship, jpmorgan). \n" +
-            "     typeofJob(contract, google). \n" +
-            "     typeofJob(freelance, microsoft). \n" +
-            "     typeofJob(temporary, amazon). \n" +
-            "     locationof(dallas,amazon). \n" +
-            "     locationof(houston,tcs). \n" +
-            "     locationof(seattle, epam). \n" +
-            "     locationof(newyork, wipro).\n" +
-            "     locationof(california, apple). \n" +
-            "     locationof(austin, facebook). \n" +
-            "     locationof(boston, jpmorgan). \n" +
-            "     locationof(chicago, google). \n" +
-            "     locationof(newyork, microsoft). \n" +
-            "     experience(python, entrylevel). \n" +
-            "     experience(linux, midlevel). \n" +
-            "     experience(java, entrylevel). \n" +
-            "     experience(php, midlevel). \n" +
-            "     experience(swift, seniorlevel). \n" +
-            "     experience(erlang, entrylevel). \n" +
-            "     experience(sql, midlevel). \n" +
-            "     experience(ruby, seniorlevel). \n" +
-            "     experience(csharp, midlevel). \n" +
-            "     trainingopportunities(linux, microsoft). \n" + 
-            "     trainingopportunities(php, amazon). \n" +
-            "     trainingopportunities(python, tcs). \n" +
-            "     trainingopportunities(java, wipro). \n" +
-            "     trainingopportunities(sql, epam). \n" +
-            "     trainingopportunities(erlang, facebook). \n" +
-            "     trainingopportunities(swift, apple). \n" +
-            "     trainingopportunities(ruby,jpmorgan). \n" +
-            "     trainingopportunities(csharp, google). \n" +
-            "     trainingopportunities(java, target). \n" +
-            "     salaryfor(entrylevel,salary1). \n" +
-            "     salaryfor(midlevel,salary2). \n" +
-            "     salaryfor(seniorlevel,salary3).;
+"    #user_skills = {python, java, csharp, linux, php, reactjs}.\n" +
+"    #company = {google,amazon,meta,tcs,wipro,epam}.\n" +
+"    #location = {dallas, houston, seattle, newyork}.\n" +
+"    #job_type = {fulltime, parttime,internship, flexible, freelance}.\n" +
+"    #experience = {entrylevel, midlevel, seniorlevel}.\n" +
+"    #salary = {salary1, salary2, salary3}.\n" +
+"predicates\n" +
+"    skillsfor( #user_skills, #company).\n" +
+"      %% remote_work(#user_skills).\n" +
+"    locationof( #location, #company).\n" +
+"      %% flexible_hours(#user_skills).\n" +
+"    least_experience(#user_skills).\n" +
+"    most_experience(#user_skills).\n" +
+"    training_opportunities(#user_skills).\n" +
+"    salaryfor(#experience,#salary).\n" +
+"    part_time_or_freelance(#user_skills).\n" +
+"    typeofJob(#job_type,#company).\n"+
+"rules\n" +
+"    skillsfor(python,amazon).\n" +
+"    skillsfor(java, tcs).\n" +
+"    locationof(dallas,amazon).\n" +
+"    locationof(houston,tcs).\n" +
+"    locationof(seattle, epam).\n" +
+"    locationof(newyork, wipro).\n" +
+"    salaryfor(entrylevel,salary1).\n" +
+"    salaryfor(midlevel,salary2).\n" +
+"    training_opportunities(linux).\n" +
+"    training_opportunities(php).\n" +
+"    typeofJob(internship,wipro).\n"+
+"    typeofJob(fulltime,amazon).\n"+
+"    part_time_or_freelance(reactjs)."; 
         // sorts
         var contstring = editor.split("sorts\n")[1].split("predicates\n");
         var sortstring = contstring[0].split('.');
